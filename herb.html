@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioSphere</title>
+    <link rel="stylesheet" href="style.herb.css">
+</head>
+
+
+  
+  <header>
+    <div class="bar">
+      <div class="title"><span class="dot"></span> Herbier - Visionneuse</div>
+      <button class="btn secondary" id="btnAutoplay" aria-pressed="false" title="Lecture automatique (Espace)"></button>
+      <button class="btn ghost" id="btnShuffle" title="Mélanger l'ordre"></button>
+      <span class="kbd" aria-hidden="true">Bienvenue</span>
+    </div>
+  </header>
+<body>
+
+<section class="hero" aria-label="Aperçu du champ et contexte">
+  <!-- META à gauche -->
+  <aside class="hero-meta">
+    <div class="hero-heading">
+      <div class="latin">Contexte de collecte</div>
+      <div class="common"></div>
+    </div>
+
+    <div class="hero-grid">
+      <div class="hkv"><span class="hk">Ville</span><span class="hv" id="heroVille">—</span></div>
+      <div class="hkv"><span class="hk">Météo</span><span class="hv" id="heroMeteo">—</span></div>
+      <div class="hkv"><span class="hk">Date</span><span class="hv" id="heroDate">—</span></div>
+      <div class="hkv"><span class="hk">Statut du champ</span><span class="hv" id="heroStatut">—</span></div>
+      <div class="hkv hkv-notes">
+        <span class="hk">Notes</span><span class="hv" id="heroNotes">—</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- STAGE à droite -->
+  <div class="hero-viewer">
+    <div class="hero-stage" id="heroStage"></div>
+
+    <div class="hero-controls">
+      <button class="btn ghost" id="heroPrev" title="Image précédente">←</button>
+      <button class="btn ghost" id="heroPlay" aria-pressed="true" title="Lecture/Pause">⏸ Pause</button>
+      <button class="btn ghost" id="heroNext" title="Image suivante">→</button>
+    </div>
+
+    <div class="hero-dots" id="heroDots" role="tablist" aria-label="Images du champ"></div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+  <main>
+    <div class="layout">
+      <!-- Viewer -->
+      <section class="viewer" aria-label="Planches de l'herbier">
+        <div class="stage" id="stage" role="group" aria-roledescription="carrousel"></div>
+        <div class="overlay" id="overlay">
+        </div>
+        <div class="controls">
+          <div class="nav">
+            <button class="btn" id="prevBtn" title="Précédent (←)">← Précédent</button>
+            <button class="btn" id="nextBtn" title="Suivant (→)">Suivant →</button>
+          </div>
+          <div class="progress" aria-label="Progression"><div id="progressFill"></div></div>
+        </div>
+        <div class="thumbs" id="thumbs" aria-label="Miniatures"></div>
+      </section>
+
+      <!-- Metadata -->
+      <aside class="meta" aria-live="polite" aria-atomic="true">
+        <div class="heading">
+          <div class="latin" id="latin">—</div>
+          <div class="common" id="common"></div>
+        </div>
+        <div class="tags" id="tags"></div>
+
+        <div class="grid">
+          <div class="kv"><span class="k">Famille</span><span class="v" id="family">—</span></div>
+          <div class="kv"><span class="k">Récolté le</span><span class="v" id="date">—</span></div>
+          <div class="kv"><span class="k">Lieu</span><span class="v" id="location">—</span></div>
+          <div class="kv"><span class="k">Coordonnées</span><span class="v" id="coords">—</span></div>
+          <div class="kv"><span class="k">Collecteur·rice</span><span class="v" id="collector">—</span></div>
+          <div class="kv"><span class="k">Référence</span><span class="v" id="ref">—</span></div>
+        </div>
+
+        <div class="kv" style="min-height:72px">
+          <span class="k">Notes</span>
+          <span class="v" id="notes">—</span>
+        </div>
+
+      </aside>
+    </div>
+  </main>
+
+    <footer>
+        <p>&copy; 2025 BioSphere</p>
+    </footer>
+
+    <script src="script.herb.js"></script>
+</body>
+</html>
