@@ -1,0 +1,372 @@
+:root{
+  --bg: #0b0f14;
+  --card: #121822;
+  --text: #e6eef7;
+  --muted: #9fb0c3;
+  --accent: #66d9e8;
+  --accent-2: #c0eb75;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --radius: 18px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:
+    radial-gradient(1200px 800px at 10% 10%, #101726 0%, transparent 60%),
+    radial-gradient(1000px 700px at 90% 30%, #0f1b2f 0%, transparent 60%),
+    var(--bg);
+  color:var(--text);
+  font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+}
+
+header{
+  position:sticky; top:0; z-index:10;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(180deg, rgba(10,14,20,.7), rgba(10,14,20,.3));
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.bar{
+  max-width:1050px; margin:0 auto; padding:16px clamp(11px, 3vw, 22px);
+  display:flex; align-items:center; gap:12px; 
+}
+.title{
+  font-weight:700; letter-spacing:.3px; margin-right:auto;
+  display:flex; align-items:center; gap:10px;
+}
+.title .dot{width:8px; height:8px; border-radius:50%; background:var(--accent-2); box-shadow:0 0 0 4px rgba(192,235,117,.18)}
+
+.btn{
+  appearance:none; border:none; cursor:pointer;
+  background: linear-gradient(180deg, #1a2230, #111827);
+  color:var(--text); padding:10px 14px; border-radius:12px;
+  box-shadow: var(--shadow);
+  display:inline-flex; align-items:center; gap:8px; font-weight:600;
+  transition: transform .06s ease, background .2s ease, opacity .2s ease;
+}
+.btn[disabled]{opacity:.5; cursor:not-allowed}
+.btn:hover{transform: translateY(-1px)}
+.btn.secondary{background:#0f1520; border:1px solid rgba(255,255,255,.08)}
+.btn.ghost{background:transparent; border:1px solid rgba(255,255,255,.12)}
+
+main{max-width:1100px; margin:28px auto; padding:0 clamp(12px, 3vw, 22px);}    
+.layout{display:grid; grid-template-columns: 1.6fr .9fr; gap:22px}
+@media (max-width: 960px){ .layout{grid-template-columns: 1fr;} }
+
+.viewer{
+  background: linear-gradient(180deg, #101726, #0b111c);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  position:relative; overflow:hidden; min-height: 480px;
+  display:grid; grid-template-rows: 1fr auto;
+}
+.stage{position:relative; overflow:hidden}
+.slide{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  opacity:0; transform: translateX(20px) scale(.98); transition: all .45s cubic-bezier(.2,.8,.2,1);
+}
+.slide.active{opacity:1; transform: translateX(0) scale(1)}
+.slide img{
+  width:100%; height:100%; object-fit:contain; object-position:center; image-rendering:auto;
+  user-select:none; -webkit-user-drag:none;
+}
+
+
+
+.controls{
+  display:flex; align-items:center; justify-content:space-between; gap:8px; padding:10px; border-top:1px solid rgba(255,255,255,.06);
+  background: linear-gradient(180deg, rgba(18,24,34,.9), rgba(12,16,24,.9));
+}
+.nav{display:flex; gap:8px; align-items:center}
+
+.progress{flex:1; height:10px; background:#0c121b; border:1px solid rgba(255,255,255,.06); border-radius:999px; overflow:hidden}
+.progress > div{height:100%; width:0%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width .45s ease}
+
+.meta{
+  background: linear-gradient(180deg, #121a28, #0e1521);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding:18px; display:flex; flex-direction:column; gap:14px;
+}
+.meta .heading{display:flex; align-items:baseline; gap:10px}
+.latin{font-size:clamp(20px, 2.2vw, 28px); font-weight:800; letter-spacing:.2px}
+.common{color:var(--muted)}
+
+.grid{
+  display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px; margin-top:4px;
+}
+@media (max-width: 520px){.grid{grid-template-columns:1fr}}
+
+.kv{
+  background: #0f1623;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:12px; padding:12px;
+}
+.kv .k{display:block; color:var(--muted); font-size:12px; letter-spacing:.4px; text-transform:uppercase}
+.kv .v{display:block; margin-top:4px; font-weight:600}
+
+.tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:4px}
+.tag{padding:6px 10px; border-radius:999px; background:#0c131f; border:1px solid rgba(255,255,255,.08); font-size:12px}
+
+.thumbs{display:flex; gap:8px; overflow:auto; padding:4px 2px 0}
+.thumb{
+  flex:0 0 auto; width:56px; height:56px; border-radius:10px; overflow:hidden; border:2px solid transparent; cursor:pointer; opacity:.8; transition:opacity .2s ease, transform .06s ease, border-color .2s ease
+}
+.thumb img{width:100%; height:100%; object-fit:cover}
+.thumb:hover{transform: translateY(-1px); opacity:1}
+.thumb.active{border-color: var(--accent); opacity:1}
+
+.kbd{font:12px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background:#0c121b; border:1px solid rgba(255,255,255,.1); padding:2px 6px; border-radius:6px; color:var(--muted)}
+
+footer{max-width:200px; margin:10px auto 28px; padding:0 clamp(10px, 3vw, 22px); color:var(--muted)}
+
+/* Impression */
+@media print{
+  header, .controls, .thumbs, footer{display:none !important}
+  body{background:#fff; color:#000}
+  .layout{grid-template-columns: 1fr}
+  .viewer, .meta{box-shadow:none; border: none}
+}
+
+
+
+
+
+/* --- Layout principal : viewer + meta --- */
+.layout{
+  display: grid;
+  grid-template-columns: 1.6fr .9fr;
+  grid-template-areas: "viewer meta";
+  gap: 22px;
+}
+
+/* Associe chaque bloc à sa zone */
+.viewer{ grid-area: viewer; }
+.meta  { grid-area: meta; }
+
+/* Sur mobile : une seule colonne, meta au-dessus du viewer */
+@media (max-width: 960px){
+  .layout{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "meta"
+      "viewer";
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== HERO / BANNIÈRE (layout inversé) ===== */
+.hero{
+  max-width:1100px;
+  margin:14px auto 8px;
+  padding:0 clamp(12px, 3vw, 22px);
+  display:grid;
+  grid-template-columns: .9fr 1.6fr; /* meta à gauche, images à droite */
+  gap:22px;
+}
+@media (max-width: 960px){
+  .hero{ grid-template-columns: 1fr; }
+}
+
+/* Panneau méta (gauche) — style proche de .meta */
+.hero-meta{
+  background: linear-gradient(180deg, #121a28, #0e1521);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding:18px; display:flex; flex-direction:column; gap:14px;
+}
+.hero-heading{display:flex; flex-direction:column; gap:4px}
+.hero-heading .latin{font-size:clamp(18px, 2vw, 24px); font-weight:800; text-align: center}
+.hero-heading .common{color:var(--muted)}
+
+.hero-grid{
+  display:grid; gap:10px; margin-top:4px;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+}
+@media (max-width: 520px){ .hero-grid{ grid-template-columns:1fr; } }
+
+.hkv{
+  background:#0f1623; border:1px solid rgba(255,255,255,.06);
+  border-radius:12px; padding:12px;
+}
+.hkv-notes{ grid-column: span 2; }
+@media (max-width: 520px){ .hkv-notes{ grid-column: auto; } }
+.hk{display:block; color:var(--muted); font-size:12px; letter-spacing:.3px; text-transform:uppercase}
+.hv{display:block; margin-top:4px; font-weight:700; color:var(--text)}
+
+
+
+/* === HERO - centrage des images uniquement dans le viewer === */
+.hero-viewer {
+  background: linear-gradient(180deg, #101726, #0b111c);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto auto auto; /* stage, controls, dots */
+  gap: 0;
+}
+
+/* La zone d'affichage (image du champ) */
+.hero-stage {
+  position: relative;
+  background: #0d1420;
+  overflow: hidden;
+  height: 430px;            
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Chaque image s'affiche centrée dans le cadre */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity .45s ease;
+}
+.hero-slide.active { opacity: 1; }
+
+/* Image centrée dans le viewer, sans zoom ni étirement */
+.hero-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  margin: 0 auto; /* centre horizontalement */
+}
+
+
+
+
+/* Contrôles sous l’image (droite) */
+.hero-controls{
+  display:flex; align-items:left; justify-content:center; gap:8px;
+  padding:10px; border-top:1px solid rgba(255,255,255,.06);
+  background: linear-gradient(180deg, rgba(18,24,34,.9), rgba(12,16,24,.9));
+
+}
+
+/* Points de pagination */
+.hero-dots{
+  display:flex; gap:8px; align-items:center; justify-content:center;
+  padding:10px 0 14px;
+}
+
+.hero-dots button{
+  width:10px; height:10px; border-radius:999px;
+  border:1px solid rgba(255,255,255,.4);
+  background: rgba(255,255,255,.15); cursor:pointer; padding:0;
+  transition: transform .06s ease, background .2s ease, border-color .2s ease;
+}
+
+.hero-dots button.active{ background:#66d9e8; border-color:transparent; transform:scale(1.1) }
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==== Colonne de photos associées (en haut à droite du viewer) ==== */
+.viewer{ position:relative; }
+
+.alt-column{
+  position:absolute; top:10px; right:10px; z-index:6;
+  display:flex; flex-direction:column; gap:8px;
+  width:88px; /* largeur des vignettes */
+  max-height: calc(100% - 20px);
+  overflow:auto;
+  padding:4px;
+  background: linear-gradient(180deg, rgba(10,14,20,.6), rgba(10,14,20,.7));
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;
+  backdrop-filter: blur(6px);
+}
+
+.alt-thumb{
+  appearance:none; border:0; padding:0; cursor:pointer;
+  width:100%; height:64px; border-radius:8px; overflow:hidden;
+  border:2px solid transparent; transition: transform .06s ease, opacity .2s ease, border-color .2s ease;
+  opacity:.9; background:#0f1520;
+}
+.alt-thumb:hover{ transform: translateY(-1px); opacity:1; }
+.alt-thumb.active{ border-color: var(--accent); opacity:1; }
+
+.alt-thumb img{
+  width:100%; height:100%; object-fit:cover; display:block;
+}
+
+/* Option: sur petits écrans, réduire un peu la largeur */
+@media (max-width: 520px){
+  .alt-column{ width:72px; }
+  .alt-thumb{ height:56px; }
+}
+
+
+
+
+:root{ --hero-max-h: 420px; } 
+
+
+
+
+
+html, body {
+  background: linear-gradient(180deg, #0b0f14, #0e1521);
+  background-attachment: fixed;
+  color: var(--text);
+}
+
+
+.hero,
+.layout,
+.meta,
+.viewer {
+  background-color: transparent;
+}
+
+
+.hero {
+  margin-bottom: 40px;  /* tu peux ajuster 30–60px selon ton goût */
+}
+
+body {
+  margin-bottom: 30px; /* espace global en bas de page */
+}
