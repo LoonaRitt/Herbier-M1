@@ -1,57 +1,154 @@
-// ========= Données =========
-// Accepte images: [{src,label}, ...] (recommandé) ; fallback image: "..."
 const PLANCHES = [
   {
-    id: "ficus",
-    images: [
-      { src: "images/ficus.jpg",   label: "Planche" },
-      { src: "images/champ-3.jpg", label: "Avant récolte" }
-    ],
-    latin: "espece L.",
-    commun: "nom commun",
-    famille: "Famille",
-    date: "2025-10-01",
-    lieu: "Auriac-sur-Vendinelle, France",
-    coords: "43.5130, 1.8040",
-    collecteur: "Loona Ritt",
-    reference: "LR-001",
-    tags: ["arbuste", "feuilles lobées", "fruits comestibles"],
-    notes: "Exposé au sud, sol calcaire, jeune rameau."
-  },
-  {
-    id: "mentha",
-    images: [
-      { src: "images/menthe.jpg",  label: "Planche" },
-      { src: "images/champ-2.jpg", label: "Avant récolte" }
-    ],
-    latin: "espece L.",
-    commun: "nom commun",
-    famille: "famille",
-    date: "2025-10-01",
-    lieu: "Auriac-sur-Vendinelle, France",
-    coords: "43.5130, 1.8040",
-    collecteur: "Loona Ritt",
-    reference: "LR-002",
-    tags: ["vivace", "aromatique", "tiges carrées"],
-    notes: "Parfum intense, pleine ombre le matin."
-  },
-  {
-    id: "taraxacum",
-    images: [
-      { src: "images/pissenlit.jpg", label: "Planche" },
-      { src: "images/champ-1.jpg",   label: "Avant récolte" }
-    ],
-    latin: "espece F.H. Wigg.",
-    commun: "nom commun",
-    famille: "famille",
-    date: "2025-10-01",
-    lieu: "Auriac-sur-Vendinelle, France",
-    coords: "43.5130, 1.8040",
-    collecteur: "Loona Ritt",
-    reference: "LR-003",
-    tags: ["rosette", "lactescent", "capitule jaune"],
-    notes: "Grande rosette basale, capitules multiples."
-  }
+  id: "LR001",
+  images: [
+    { src: "images/LR001-1.jpg", label: "Planche" },
+    { src: "images/LR001-2.jpg", label: "Avant récolte" }
+  ],
+  latin: "Helianthus annuus L.",
+  commun: "Tournesol",
+  famille: "Asteraceae",
+  date: "2025-10-01",
+  lieu: "Auriac-sur-Vendinelle, France",
+  coords: "43.5130, 1.8040",
+  collecteur: "Loona Ritt",
+  reference: "LR-001"
+},
+{
+  id: "LR002",
+  images: [
+    { src: "images/LR002-1.jpg", label: "Planche" },
+    { src: "images/LR002-2.jpg", label: "Avant récolte" }
+  ],
+  latin: "Mercurialis annua L.",
+  commun: "Mercuriale annuelle",
+  famille: "Euphorbiaceae",
+  date: "2025-10-01",
+  lieu: "Auriac-sur-Vendinelle, France",
+  coords: "43.5130, 1.8040",
+  collecteur: "Loona Ritt",
+  reference: "LR-002"
+},
+{
+  id: "LR003",
+  images: [
+    { src: "images/LR003-1.jpg", label: "Planche" },
+    { src: "images/LR003-2.jpg", label: "Avant récolte" }
+  ],
+  latin: "Echinochloa crus-galli (L.) P.Beauv",
+  commun: "Borgou pied-de-coq",
+  famille: "Poaceae",
+  date: "2025-10-01",
+  lieu: "Auriac-sur-Vendinelle, France",
+  coords: "43.5130, 1.8040",
+  collecteur: "Loona Ritt",
+  reference: "LR-003"
+},
+{
+  id: "LR004",
+  images: [
+    { src: "images/LR004-1.jpg", label: "Planche" },
+    { src: "images/LR004-2.jpg", label: "Avant récolte" }
+  ],
+  latin: "Brassica montana Pourr.",
+  commun: "Chou des montagnes",
+  famille: "Brassicaceae",
+  date: "2025-10-01",
+  lieu: "Auriac-sur-Vendinelle, France",
+  coords: "43.5130, 1.8040",
+  collecteur: "Loona Ritt",
+  reference: "LR-004"
+},
+{
+  id: "LR005",
+  images: [
+    { src: "images/LR005-1.jpg", label: "Planche" },
+    { src: "images/LR005-2.jpg", label: "Avant récolte" }
+  ],
+  latin: "Plantago major L.",
+  commun: "Grand plantain",
+  famille: "Plantaginaceae",
+  date: "2025-10-01",
+  lieu: "Auriac-sur-Vendinelle, France",
+  coords: "43.5130, 1.8040",
+  collecteur: "Loona Ritt",
+  reference: "LR-005"
+},
+{
+  id: "LR006",
+  images: [
+    { src: "images/LR006-1.jpg", label: "Planche" },
+    { src: "images/LR006-2.jpg", label: "Avant récolte" }
+  ],
+  latin: "Reseda phyteuma L.",
+  commun: "Réséda raiponce",
+  famille: "Resedaceae",
+  date: "2025-10-01",
+  lieu: "Auriac-sur-Vendinelle, France",
+  coords: "43.5130, 1.8040",
+  collecteur: "Loona Ritt",
+  reference: "LR-006"
+},
+{
+  id: "LR007",
+  images: [
+    { src: "images/LR007-1.jpg", label: "Planche" },
+    { src: "images/LR007-2.jpg", label: "Avant récolte" }
+  ],
+  latin: "Potentilla reptans L.",
+  commun: "Potentille rampante",
+  famille: "Rosaceae",
+  date: "2025-10-01",
+  lieu: "Auriac-sur-Vendinelle, France",
+  coords: "43.5130, 1.8040",
+  collecteur: "Loona Ritt",
+  reference: "LR-007"
+},
+{
+  id: "LR008",
+  images: [
+    { src: "images/LR008-1.jpg", label: "Planche" },
+    { src: "images/LR008-2.jpg", label: "Avant récolte" }
+  ],
+  latin: "Heliotropium europaeum L.",
+  commun: "Héliotrope d’Europe",
+  famille: "Boraginaceae",
+  date: "2025-10-01",
+  lieu: "Auriac-sur-Vendinelle, France",
+  coords: "43.5130, 1.8040",
+  collecteur: "Loona Ritt",
+  reference: "LR-008"
+},
+{
+  id: "LR009",
+  images: [
+    { src: "images/LR009-1.jpg", label: "Planche" },
+    { src: "images/LR009-2.jpg", label: "Avant récolte" }
+  ],
+  latin: "Solanum nigrum L.",
+  commun: "Morelle noire",
+  famille: "Solanaceae",
+  date: "2025-10-01",
+  lieu: "Auriac-sur-Vendinelle, France",
+  coords: "43.5130, 1.8040",
+  collecteur: "Loona Ritt",
+  reference: "LR-009"
+},
+{
+  id: "LR010",
+  images: [
+    { src: "images/LR010-1.jpg", label: "Planche" },
+    { src: "images/LR010-2.jpg", label: "Avant récolte" }
+  ],
+  latin: "Portulaca oleracea L.",
+  commun: "Pourpier maraîcher",
+  famille: "Portulacaceae",
+  date: "2025-10-01",
+  lieu: "Auriac-sur-Vendinelle, France",
+  coords: "43.5130, 1.8040",
+  collecteur: "Loona Ritt",
+  reference: "LR-010"
+}
 ];
 
 // ========= État / Références DOM =========
@@ -317,7 +414,7 @@ const HERO = {
     "images/champ-4.jpg",
     "images/champ-5.jpg"
   ],
-  ville: "Auriac-sur-Vendinelle, France",
+  ville: "Auriac-sur-Vendinelle, 31460 France",
   meteo: "Ensoleillé, 21°C · vent faible",
   date: "2025-10-01",
   statut_champ: "Non biologique",
@@ -440,3 +537,4 @@ function heroTogglePlay(force){
 document.addEventListener('DOMContentLoaded', ()=>{
   if(HERO?.images?.length) { buildHero(); heroTogglePlay(true); }
 });
+
